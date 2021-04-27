@@ -11,8 +11,6 @@ public class Rules : MonoBehaviour
     public WinningByHigherCard winningByHigherCard;
     public WinningByOldMadManCard winningByOldMadManCard;
 
-    public GameObject table;
-
     public List<int> indexOfCards = new List<int>();    
 
     public bool everyonePlayed = false;

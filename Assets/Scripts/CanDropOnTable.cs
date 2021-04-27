@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanDropOnTable : MonoBehaviour
 {
-    public GameObject table;
+    public GameObject tableDropZone;
     public IsARedCard isARedCard;
     public CreatingCards creatingCards;
     public DrawingCards drawingCards;
@@ -14,7 +14,7 @@ public class CanDropOnTable : MonoBehaviour
 
     public void CanDropCardOnTable(GameObject cardInHand, bool playerHaveRedCard, bool redCardOnTable)
     {
-        if (!cardInHand.transform.IsChildOf(table.transform))
+        if (!cardInHand.transform.IsChildOf(tableDropZone.transform))
         {
             Debug.Log("On Analyse la carte si elle peut être drop sur la table");
 

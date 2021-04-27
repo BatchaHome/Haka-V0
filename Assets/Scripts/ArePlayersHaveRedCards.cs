@@ -6,6 +6,7 @@ public class ArePlayersHaveRedCards : MonoBehaviour
 {
     public CreatingCards creatingCards;
     public PlayerHand playerHand;
+    public TurnPlayer turnPlayer;
 
     public GameObject player1Hand;
     public GameObject player2Hand;
@@ -13,9 +14,9 @@ public class ArePlayersHaveRedCards : MonoBehaviour
 
     public bool isPlayerHasRedCards;
 
-    public void PlayerHasRedCardsInHand(GameObject cardInHand)
+    public void PlayerHasRedCardsInHand()
     {
-        if (player1Hand.GetComponent<PlayerHand>().cardsInHand.Contains(cardInHand)) 
+        if (turnPlayer.player1HasToPlay)
         {
             foreach (GameObject card in player1Hand.GetComponent<PlayerHand>().cardsInHand)
             {
@@ -23,13 +24,9 @@ public class ArePlayersHaveRedCards : MonoBehaviour
                 {
                     isPlayerHasRedCards = true;
                 }
-                else
-                {
-                    isPlayerHasRedCards = false;
-                }
             }
         }
-        else if (player2Hand.GetComponent<PlayerHand>().cardsInHand.Contains(cardInHand))
+        else if (turnPlayer.player2HasToPlay)
         {
             foreach (GameObject card in player2Hand.GetComponent<PlayerHand>().cardsInHand)
             {
@@ -37,13 +34,9 @@ public class ArePlayersHaveRedCards : MonoBehaviour
                 {
                     isPlayerHasRedCards = true;
                 }
-                else
-                {
-                    isPlayerHasRedCards = false;
-                }
             }
         }
-        else if (player2Hand.GetComponent<PlayerHand>().cardsInHand.Contains(cardInHand))
+        else if (turnPlayer.player3HasToPlay)
         {
             foreach (GameObject card in player3Hand.GetComponent<PlayerHand>().cardsInHand)
             {
@@ -51,11 +44,11 @@ public class ArePlayersHaveRedCards : MonoBehaviour
                 {
                     isPlayerHasRedCards = true;
                 }
-                else
-                {
-                    isPlayerHasRedCards = false;
-                }
             }
+        }
+        else
+        {
+            Debug.Log("Something went wrong ...");
         }
     }
 }

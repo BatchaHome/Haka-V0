@@ -9,10 +9,11 @@ public class DragAndDrop : MonoBehaviour
     public CanDropOnTable canDropOnTable;
     public TurnPlayer turnPlayer;
 
+   
     public GameObject player1Hand;
     public GameObject player2Hand;
     public GameObject player3Hand;
-    public GameObject table;
+    public GameObject tableDropZone;
     public GameObject startParent;
 
     public bool isOverTable;
@@ -22,8 +23,9 @@ public class DragAndDrop : MonoBehaviour
 
     private void Awake()
     {
-        table = GameObject.Find("Table");
-        turnPlayer = table.GetComponent<TurnPlayer>();
+        
+        tableDropZone = GameObject.Find("DropZone");
+        turnPlayer = tableDropZone.GetComponent<TurnPlayer>();
     }
 
     public void OnMouseDown()
@@ -35,29 +37,25 @@ public class DragAndDrop : MonoBehaviour
         player2Hand = GameObject.Find("Player2Hand");
         player3Hand = GameObject.Find("Player3Hand");
 
-        if (transform.IsChildOf(player1Hand.transform))
+       if (gameObject.transform.IsChildOf(player1Hand.transform))
         {
             arePlayersHaveRedCards = player1Hand.GetComponent<ArePlayersHaveRedCards>();
-            arePlayersHaveRedCards.PlayerHasRedCardsInHand(gameObject);
         }
-        else if (transform.IsChildOf(player2Hand.transform))
+        else if (gameObject.transform.IsChildOf(player2Hand.transform))
         {
             arePlayersHaveRedCards = player2Hand.GetComponent<ArePlayersHaveRedCards>();
-            arePlayersHaveRedCards.PlayerHasRedCardsInHand(gameObject);
         }
-        else if (transform.IsChildOf(player3Hand.transform))
+        else if (gameObject.transform.IsChildOf(player3Hand.transform))
         {
             arePlayersHaveRedCards = player3Hand.GetComponent<ArePlayersHaveRedCards>();
-            arePlayersHaveRedCards.PlayerHasRedCardsInHand(gameObject);
         }
 
-        isARedCard = table.GetComponent<IsARedCard>();
-        canDropOnTable = table.GetComponent<CanDropOnTable>();
+        isARedCard = tableDropZone.GetComponent<IsARedCard>();
+        canDropOnTable = tableDropZone.GetComponent<CanDropOnTable>();
 
         isARedCard.RedCardOnTable();
 
         canDropOnTable.CanDropCardOnTable(gameObject, arePlayersHaveRedCards.isPlayerHasRedCards, isARedCard.isARedCardOnTable);
-        Debug.Log("Drag begon");
         isDragging = true;
     }
 
@@ -75,9 +73,12 @@ public class DragAndDrop : MonoBehaviour
     {
         if (isOverTable && canDropOnTable.canDropHisCardOnTable)
         {
-            transform.SetParent(table.transform, true);
-            turnPlayer.cardsInTable.Add(gameObject);
+            transform.SetParent(tableDropZone.transform, true);
 
+            if (!turnPlayer.cardsInTable.Contains(gameObject))
+            {
+                turnPlayer.cardsInTable.Add(gameObject);
+            }
         }
         else
         {
@@ -85,7 +86,6 @@ public class DragAndDrop : MonoBehaviour
             transform.SetParent(startParent.transform, false);
         }
 
-        Debug.Log("Drag ended");
         isDragging = false;
     }
     void Update()
@@ -94,6 +94,7 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.Translate(mousePosition, Space.World);
+            
         }
     }
 }

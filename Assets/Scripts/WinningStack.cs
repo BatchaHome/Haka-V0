@@ -28,7 +28,7 @@ public class WinningStack : MonoBehaviour
                 if (player1Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
                 {
                     
-                    Debug.Log("La carte va dans p1");
+                    Debug.Log("Le joueur 1 a gagné ce pli");
                     card.transform.SetParent(player1CardStackWon.transform, true);
 
                     card.transform.position = player1CardStackWon.transform.position;
@@ -43,7 +43,7 @@ public class WinningStack : MonoBehaviour
                 {
                     
 
-                    Debug.Log("La carte va dans p2");
+                    Debug.Log("Le joueur 2 a gagné ce pli");
                     card.transform.SetParent(player2CardStackWon.transform, true);
 
                     card.transform.position = player2CardStackWon.transform.position;
@@ -58,7 +58,7 @@ public class WinningStack : MonoBehaviour
                 {
                     
 
-                    Debug.Log("La carte va dans p3");
+                    Debug.Log("Le joueur 3 a gagné ce pli");
                     card.transform.SetParent(player3CardStackWon.transform, true);
 
                     card.transform.position = player3CardStackWon.transform.position;

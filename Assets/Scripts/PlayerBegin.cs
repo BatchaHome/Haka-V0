@@ -26,20 +26,20 @@ public class PlayerBegin: MonoBehaviour
 
         if (indexOfPlayer == 1)
         {
-            turnPlayer.player1HasToPlay = true;
             isPlayer1Begin = true;
+            turnPlayer.player1HasToPlay = true;
             Debug.Log("C'est le joueur 1 qui commence");            
         }
         else if (indexOfPlayer == 2)
         {
-            turnPlayer.player2HasToPlay = true;
             isPlayer2Begin = true;
+            turnPlayer.player2HasToPlay = true;
             Debug.Log("C'est le joueur 2 qui commence");
         }
         else if (indexOfPlayer == 3)
         {
-            turnPlayer.player3HasToPlay = true;
             isPlayer3Begin = true;
+            turnPlayer.player3HasToPlay = true;
             Debug.Log("C'est le joueur 3 qui commence");
         }
 

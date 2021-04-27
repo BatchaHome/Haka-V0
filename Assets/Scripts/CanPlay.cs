@@ -20,19 +20,48 @@ public class CanPlay : MonoBehaviour
             {
                 player1Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = true;
             }
+
+            for (int i = 0; i < player2Hand.transform.childCount; i++)
+            {
+                player2Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = false;
+            }
+
+            for (int i = 0; i < player3Hand.transform.childCount; i++)
+            {
+                player3Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = false;
+            }
         }
         else if (turnPlayer.player2HasToPlay)
         {
             for (int i = 0; i < player2Hand.transform.childCount; i++)
             {
                 player2Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = true;
-            }           
+            }
+            for (int i = 0; i < player1Hand.transform.childCount; i++)
+            {
+                player1Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = false;
+            }
+
+            for (int i = 0; i < player3Hand.transform.childCount; i++)
+            {
+                player3Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = false;
+            }
         } 
         else if (turnPlayer.player3HasToPlay)
         {
             for (int i = 0; i < player3Hand.transform.childCount; i++)
             {
                 player3Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = true;
+            }
+
+            for (int i = 0; i < player1Hand.transform.childCount; i++)
+            {
+                player1Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = false;
+            }
+
+            for (int i = 0; i < player2Hand.transform.childCount; i++)
+            {
+                player2Hand.transform.GetChild(i).GetComponent<DragAndDrop>().enabled = false;
             }
         }
     }

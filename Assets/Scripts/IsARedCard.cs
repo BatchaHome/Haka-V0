@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class IsARedCard : MonoBehaviour
 {
-    public GameObject table;
     public TurnPlayer turnPlayer;
     public CreatingCards creatingCards;
 

@@ -47,17 +47,15 @@ public class WinningByHigherCard : MonoBehaviour
                 if (drawingCards.player1Cards.Contains(card))
                 {
                     winningStack.isPlayer1WonThisStack = true;
-                    Debug.Log("Le joueur 1 a gagné ce pli");
                 }
                 else if (drawingCards.player2Cards.Contains(card))
                 {
                     winningStack.isPlayer2WonThisStack = true;
-                    Debug.Log("Le joueur 2 a gagné ce pli");
                 }
                 else if (drawingCards.player3Cards.Contains(card))
                 {
                     winningStack.isPlayer3WonThisStack = true;
-                    Debug.Log("Le joueur 3 a gagné ce pli");
+                    
                 }
             }
         }
