@@ -25,26 +25,22 @@ public class TurnPlayer : MonoBehaviour
     public bool player2HavePlayedThisTurn = false;
     public bool player3HavePlayedThisTurn = false;
 
-    private void OnTransformChildrenChanged()
+    public void SystemTurnPlayer()
     {
-        if (!endOfTurn.isTurnReset)
-        {
+        
             if (player1HasToPlay)
             {
-                player1HavePlayed = true;
                 player1HasToPlay = false;
                 player2HasToPlay = true;
             }
             else if (player2HasToPlay)
             {
                 player2HasToPlay = false;
-                player2HavePlayed = true;
                 player3HasToPlay = true;
             }
             else if (player3HasToPlay)
             {
                 player3HasToPlay = false;
-                player3HavePlayed = true;
                 player1HasToPlay = true;
             }
 
@@ -66,6 +62,7 @@ public class TurnPlayer : MonoBehaviour
                 player3HavePlayedThisTurn = true;
                 Debug.Log("Le joueur 3 a joué, c'est au joueur 1 de joueur");
             }
-        } 
+        
     }
+        
 }

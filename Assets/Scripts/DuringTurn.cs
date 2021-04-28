@@ -34,7 +34,7 @@ public class DuringTurn : MonoBehaviour
         if (rules.everyonePlayed)
         {
             rules.WhoWinThisTurn();
-            
+            rules.everyonePlayed = false;
         }
 
         if (winningStack.isPlayer1WonThisStack || winningStack.isPlayer2WonThisStack || winningStack.isPlayer3WonThisStack)
@@ -48,12 +48,6 @@ public class DuringTurn : MonoBehaviour
             winningStack.isPlayer1WonThisStack = false;
             winningStack.isPlayer2WonThisStack = false;
             winningStack.isPlayer3WonThisStack = false;
-        }
-
-        if (endOfTurn.isTurnReset)
-        {
-            rules.everyonePlayed = false;
-            endOfTurn.isTurnReset = false;
         }
     }
 }

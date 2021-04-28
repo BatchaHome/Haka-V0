@@ -23,7 +23,9 @@ public class DragAndDrop : MonoBehaviour
 
     private void Awake()
     {
-        
+        player1Hand = GameObject.Find("Player1Hand");
+        player2Hand = GameObject.Find("Player2Hand");
+        player3Hand = GameObject.Find("Player3Hand");
         tableDropZone = GameObject.Find("DropZone");
         turnPlayer = tableDropZone.GetComponent<TurnPlayer>();
     }
@@ -32,10 +34,6 @@ public class DragAndDrop : MonoBehaviour
     {
         startParent = transform.parent.gameObject;
         startPosition = transform.position;
-
-        player1Hand = GameObject.Find("Player1Hand");
-        player2Hand = GameObject.Find("Player2Hand");
-        player3Hand = GameObject.Find("Player3Hand");
 
        if (gameObject.transform.IsChildOf(player1Hand.transform))
         {
@@ -73,12 +71,28 @@ public class DragAndDrop : MonoBehaviour
     {
         if (isOverTable && canDropOnTable.canDropHisCardOnTable)
         {
-            transform.SetParent(tableDropZone.transform, true);
-
+            if (transform.IsChildOf(player1Hand.transform))
+            {
+                turnPlayer.player1HavePlayed = true;
+                turnPlayer.SystemTurnPlayer();
+            }
+            else if (transform.IsChildOf(player2Hand.transform))
+            {
+                turnPlayer.player2HavePlayed = true;
+                turnPlayer.SystemTurnPlayer();
+            }
+            else if (transform.IsChildOf(player3Hand.transform))
+            {
+                turnPlayer.player3HavePlayed = true;
+                turnPlayer.SystemTurnPlayer();
+            }
+                    
             if (!turnPlayer.cardsInTable.Contains(gameObject))
             {
                 turnPlayer.cardsInTable.Add(gameObject);
             }
+
+            transform.SetParent(tableDropZone.transform, true);
         }
         else
         {
