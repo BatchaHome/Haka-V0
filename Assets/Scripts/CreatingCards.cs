@@ -59,7 +59,7 @@ public class CreatingCards : MonoBehaviour
             oldMadManCardInstantiated.transform.SetParent(deck.transform, false);
 
             oldMadManCardText = oldMadManCardInstantiated.GetComponentInChildren<UnityEngine.UI.Text>();
-            oldMadManCardText.text = i.ToString();
+            oldMadManCardText.text = "Vieux Fou";
 
             oldMadManCardInstantiated.transform.position = deck.transform.position;
 

@@ -36,6 +36,12 @@ public class WinningByOldMadManCard : MonoBehaviour
                 isPlayer3PlayedOMM = true;
                 Debug.Log("Le joueur 3 a joué une carte Vieux fou");
             }
+            else
+            {
+                isPlayer1PlayedOMM = false;
+                isPlayer2PlayedOMM = false;
+                isPlayer3PlayedOMM = false;
+            }
         }
 
         if (isPlayer1PlayedOMM && isPlayer2PlayedOMM && isPlayer3PlayedOMM && playerBegin.player1PlaceInTurn > playerBegin.player2PlaceInTurn && playerBegin.player1PlaceInTurn > playerBegin.player3PlaceInTurn)

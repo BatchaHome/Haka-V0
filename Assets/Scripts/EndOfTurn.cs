@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EndOfTurn : MonoBehaviour
 {
@@ -9,19 +8,15 @@ public class EndOfTurn : MonoBehaviour
     public PlayerBegin playerBegin;
     public IsARedCard isARedCard;
     public Rules rules;
+    public WinningByOldMadManCard winningByOldMadManCard;
+    public WinningStack winningStack;
+    public DrawingCards drawingCards;
 
-    public GameObject player1Area;
-    public GameObject player2Area;
-    public GameObject player3Area;
-
+    public GameObject deck;
     public GameObject tableDropZone;
     public GameObject player1Hand;
     public GameObject player2Hand;
     public GameObject player3Hand;
-
-    public GameObject player1CardStackWon;
-    public GameObject player2CardStackWon;
-    public GameObject player3CardStackWon;
 
     public int pointPlayer1;
     public int pointPlayer2;
@@ -29,13 +24,18 @@ public class EndOfTurn : MonoBehaviour
 
     public bool isTurnReset = false;
 
+    public int turnOfTable;
+
     public void ResetForNewTurn()
-    {  
+    {
         ResetPlayerHand();
         ResetCardOnTable();
         WhoBeginAfterTurn();
-    }
 
+        turnOfTable++;
+
+        Debug.Log("Reset?");
+    }
     public void ResetPlayerHand()
     {
         foreach (GameObject card in turnPlayer.cardsInTable)
@@ -53,6 +53,12 @@ public class EndOfTurn : MonoBehaviour
                 player3Hand.GetComponent<PlayerHand>().cardsInHand.Remove(card);
             }
         }
+
+        winningStack.player1StackWon.Clear();
+        winningStack.player2StackWon.Clear();
+        winningStack.player3StackWon.Clear();
+        drawingCards.gozeCards.Clear();
+
     }
 
     public void ResetCardOnTable()
@@ -62,10 +68,19 @@ public class EndOfTurn : MonoBehaviour
 
         rules.indexOfCards.Clear();
 
-        for (int i = 0; i < tableDropZone.transform.childCount; i++)
-        {
-            Destroy(tableDropZone.transform.GetChild(i).gameObject);
-        }
+        //foreach (Transform cardOnTable in tableDropZone.transform)
+        //{
+        //    cardOnTable.transform.GetComponent<DragAndDrop>().enabled = false;
+        //    cardOnTable.transform.SetParent(deck.transform, true);
+        //    cardOnTable.transform.position = deck.transform.position;
+        //}
+
+        //foreach (Transform cardOnTable in tableDropZone.transform)
+        //{
+        //    cardOnTable.transform.GetComponent<DragAndDrop>().enabled = false;
+        //    cardOnTable.transform.SetParent(deck.transform, true);
+        //    cardOnTable.transform.position = deck.transform.position;
+        //}
     }
 
     public void WhoBeginAfterTurn()
@@ -108,49 +123,5 @@ public class EndOfTurn : MonoBehaviour
         }
 
         playerBegin.WhoPlayedAfterWho();
-    }
-
-    public void ComptingPoint()
-    {
-        foreach (GameObject stack in player1CardStackWon.transform)
-        {
-           pointPlayer1 = 0;
-           pointPlayer1++;
-        }
-
-        foreach (GameObject stack in player2CardStackWon.transform)
-        {
-            pointPlayer2 = 0;
-            pointPlayer2++;
-        }
-
-        foreach (GameObject stack in player3CardStackWon.transform)
-        {
-            pointPlayer3 = 0;
-            pointPlayer3++;
-        }
-
-        if (pointPlayer1 == 0)
-        {
-            pointPlayer1 = -2;
-        }
-        else if (pointPlayer2 == 0)
-        {
-            pointPlayer2 = -2;
-        }
-        else if (pointPlayer3 == 0)
-        {
-            pointPlayer3 = -2;
-        }
-
-        Text textPointPlayer1 = player1CardStackWon.GetComponentInChildren<Text>();
-        textPointPlayer1.text = textPointPlayer1.text;
-
-        Text textPointPlayer2 = player2CardStackWon.GetComponentInChildren<Text>();
-        textPointPlayer2.text = pointPlayer2.ToString();
-
-        Text textPointPlayer3 = player3CardStackWon.GetComponentInChildren<Text>();
-        textPointPlayer3.text = pointPlayer3.ToString();
-
     }
 }

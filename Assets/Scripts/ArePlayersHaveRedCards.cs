@@ -24,6 +24,10 @@ public class ArePlayersHaveRedCards : MonoBehaviour
                 {
                     isPlayerHasRedCards = true;
                 }
+                else
+                {
+                    isPlayerHasRedCards = false;
+                }
             }
         }
         else if (turnPlayer.player2HasToPlay)
@@ -34,6 +38,10 @@ public class ArePlayersHaveRedCards : MonoBehaviour
                 {
                     isPlayerHasRedCards = true;
                 }
+                else
+                {
+                    isPlayerHasRedCards = false;
+                }
             }
         }
         else if (turnPlayer.player3HasToPlay)
@@ -43,6 +51,10 @@ public class ArePlayersHaveRedCards : MonoBehaviour
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
                     isPlayerHasRedCards = true;
+                }
+                else
+                {
+                    isPlayerHasRedCards = false;
                 }
             }
         }

@@ -7,6 +7,7 @@ public class StartGame : MonoBehaviour
     public CreatingCards creatingCards;
     public DrawingCards drawingCards;
     public PlayerBegin playerBegin;
+    public EndOfTurn endOfTurn;
 
 
     void Start()
@@ -16,5 +17,7 @@ public class StartGame : MonoBehaviour
         creatingCards.CreateOldMadManCards();
         drawingCards.DrawingCard();
         playerBegin.WhoBegin();
+
+        endOfTurn.turnOfTable = 0;
     }
 }

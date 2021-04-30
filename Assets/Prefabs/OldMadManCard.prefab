@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 43
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -212,6 +212,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4de26066678a8341b9d12fb149d6bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arePlayersHaveRedCards: {fileID: 0}
+  isARedCard: {fileID: 0}
+  canDropOnTable: {fileID: 0}
+  turnPlayer: {fileID: 0}
+  player1Hand: {fileID: 0}
+  player2Hand: {fileID: 0}
+  player3Hand: {fileID: 0}
+  tableDropZone: {fileID: 0}
+  startParent: {fileID: 0}
+  isOverTable: 0
   isDragging: 0
 --- !u!50 &177242218920422937
 Rigidbody2D:

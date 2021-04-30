@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 204344872}
   - component: {fileID: 204344871}
   - component: {fileID: 204344870}
+  - component: {fileID: 204344873}
   m_Layer: 5
   m_Name: Deck
   m_TagString: Untagged
@@ -302,6 +303,19 @@ RectTransform:
   m_AnchoredPosition: {x: -269, y: 0}
   m_SizeDelta: {x: 60, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &204344873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204344869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5d6bf15846311499123022e7bd3b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInDeck: []
 --- !u!224 &231645173 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
@@ -933,6 +947,10 @@ GameObject:
   - component: {fileID: 945524778}
   - component: {fileID: 945524783}
   - component: {fileID: 945524784}
+  - component: {fileID: 945524787}
+  - component: {fileID: 945524786}
+  - component: {fileID: 945524785}
+  - component: {fileID: 945524788}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -1080,6 +1098,7 @@ MonoBehaviour:
   creatingCards: {fileID: 945524774}
   drawingCards: {fileID: 945524777}
   playerBegin: {fileID: 945524775}
+  endOfTurn: {fileID: 945524784}
 --- !u!114 &945524777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,12 +1230,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnPlayer: {fileID: 2042968686}
+  cardInDeck: {fileID: 204344873}
+  deck: {fileID: 204344869}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
   player3Hand: {fileID: 1470019260}
   player1CardStackWon: {fileID: 1777226433}
   player2CardStackWon: {fileID: 1486147347}
   player3CardStackWon: {fileID: 1420858005}
+  player1StackWon: []
+  player2StackWon: []
+  player3StackWon: []
   isPlayer1WonThisStack: 0
   isPlayer2WonThisStack: 0
   isPlayer3WonThisStack: 0
@@ -1236,20 +1260,95 @@ MonoBehaviour:
   playerBegin: {fileID: 945524775}
   isARedCard: {fileID: 2042968683}
   rules: {fileID: 945524779}
-  player1Area: {fileID: 0}
-  player2Area: {fileID: 0}
-  player3Area: {fileID: 0}
+  winningByOldMadManCard: {fileID: 945524782}
+  winningStack: {fileID: 945524783}
+  drawingCards: {fileID: 945524777}
+  deck: {fileID: 204344869}
   tableDropZone: {fileID: 2042968681}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
   player3Hand: {fileID: 1470019260}
-  player1CardStackWon: {fileID: 0}
-  player2CardStackWon: {fileID: 0}
-  player3CardStackWon: {fileID: 0}
   pointPlayer1: 0
   pointPlayer2: 0
   pointPlayer3: 0
   isTurnReset: 0
+  turnOfTable: 1
+--- !u!114 &945524785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f845ed2919df1459d45da3ba0d967f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endOfRound: {fileID: 945524787}
+  player1Point: 
+  player2Point: 
+  player3Point: 
+  player1AreaPoint: {fileID: 1391727687}
+  player2AreaPoint: {fileID: 669999378}
+  player3AreaPoint: {fileID: 1970860713}
+  player1CardStackWon: {fileID: 1777226433}
+  player2CardStackWon: {fileID: 1486147347}
+  player3CardStackWon: {fileID: 1420858005}
+--- !u!114 &945524786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac672d82c4dee6f45843f2f1c5f677be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goze: {fileID: 511320497}
+  deck: {fileID: 204344869}
+  player1CardStackWon: {fileID: 1777226433}
+  player2CardStackWon: {fileID: 1486147347}
+  player3CardStackWon: {fileID: 1420858005}
+  player1Hand: {fileID: 2118263182}
+  player2Hand: {fileID: 822752319}
+  player3Hand: {fileID: 1470019260}
+  drawingCards: {fileID: 945524777}
+  creatingCards: {fileID: 945524774}
+  winningStack: {fileID: 945524783}
+  cardInDeck: {fileID: 204344873}
+--- !u!114 &945524787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1752d15fb44f5a244b3e7d43bac1b531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endOfTurn: {fileID: 945524784}
+  isEndOfTheRound: 0
+  numberOfRound: 0
+--- !u!114 &945524788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550fe35bf8744ff4c99b8ec1d099dc3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endOfRound: {fileID: 945524787}
+  systemOfPoint: {fileID: 945524785}
+  resetForNewRound: {fileID: 945524786}
 --- !u!1 &1260219258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,7 +1976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 117}
+  m_AnchoredPosition: {x: 0, y: 117}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970860715
