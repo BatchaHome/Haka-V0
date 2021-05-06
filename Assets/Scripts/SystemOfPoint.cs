@@ -31,17 +31,21 @@ public class SystemOfPoint : MonoBehaviour
 
     public void ComptingPoint()
     {
-        foreach (Transform stack in player1CardStackWon.transform)
+        pointPlayer1 = 0;
+        pointPlayer2 = 0;
+        pointPlayer3 = 0;
+
+        foreach (GameObject stack in player1CardStackWon.GetComponent<ListStackPlayer>().stackWon)
         {
             pointPlayer1++;
         }
 
-        foreach (Transform stack in player2CardStackWon.transform)
+        foreach (GameObject stack in player2CardStackWon.GetComponent<ListStackPlayer>().stackWon)
         {
             pointPlayer2++;
         }
 
-        foreach (Transform stack in player3CardStackWon.transform)
+        foreach (GameObject stack in player3CardStackWon.GetComponent<ListStackPlayer>().stackWon)
         {
             pointPlayer3++;
         }

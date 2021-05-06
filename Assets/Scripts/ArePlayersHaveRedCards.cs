@@ -22,11 +22,12 @@ public class ArePlayersHaveRedCards : MonoBehaviour
             {
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
-                    isPlayerHasRedCards = true;
+                    player1Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = true;
+                    break;
                 }
                 else
                 {
-                    isPlayerHasRedCards = false;
+                    player1Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = false;
                 }
             }
         }
@@ -36,11 +37,12 @@ public class ArePlayersHaveRedCards : MonoBehaviour
             {
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
-                    isPlayerHasRedCards = true;
+                    player2Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = true;
+                    break;
                 }
                 else
                 {
-                    isPlayerHasRedCards = false;
+                    player2Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = false;
                 }
             }
         }
@@ -50,11 +52,12 @@ public class ArePlayersHaveRedCards : MonoBehaviour
             {
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
-                    isPlayerHasRedCards = true;
+                    player3Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = true;
+                    break;
                 }
                 else
                 {
-                    isPlayerHasRedCards = false;
+                    player3Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = false;
                 }
             }
         }

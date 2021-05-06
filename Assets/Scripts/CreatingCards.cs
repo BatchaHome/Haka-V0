@@ -65,6 +65,5 @@ public class CreatingCards : MonoBehaviour
 
             cards.Add(oldMadManCardInstantiated);
         }
-
     }
 }

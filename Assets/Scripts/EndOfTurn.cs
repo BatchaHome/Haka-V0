@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EndOfTurn : MonoBehaviour
 {
+    public ListCardsTable listCardsTable;
+
     public TurnPlayer turnPlayer;
     public PlayerBegin playerBegin;
     public IsARedCard isARedCard;
@@ -38,7 +40,7 @@ public class EndOfTurn : MonoBehaviour
     }
     public void ResetPlayerHand()
     {
-        foreach (GameObject card in turnPlayer.cardsInTable)
+        foreach (GameObject card in listCardsTable.cardsInTable)
         {
             if (player1Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
             {
@@ -53,34 +55,14 @@ public class EndOfTurn : MonoBehaviour
                 player3Hand.GetComponent<PlayerHand>().cardsInHand.Remove(card);
             }
         }
-
-        winningStack.player1StackWon.Clear();
-        winningStack.player2StackWon.Clear();
-        winningStack.player3StackWon.Clear();
-        drawingCards.gozeCards.Clear();
-
     }
 
     public void ResetCardOnTable()
     {
-        turnPlayer.cardsInTable.Clear();
+        listCardsTable.cardsInTable.Clear();
         isARedCard.isARedCardOnTable = false;
 
         rules.indexOfCards.Clear();
-
-        //foreach (Transform cardOnTable in tableDropZone.transform)
-        //{
-        //    cardOnTable.transform.GetComponent<DragAndDrop>().enabled = false;
-        //    cardOnTable.transform.SetParent(deck.transform, true);
-        //    cardOnTable.transform.position = deck.transform.position;
-        //}
-
-        //foreach (Transform cardOnTable in tableDropZone.transform)
-        //{
-        //    cardOnTable.transform.GetComponent<DragAndDrop>().enabled = false;
-        //    cardOnTable.transform.SetParent(deck.transform, true);
-        //    cardOnTable.transform.position = deck.transform.position;
-        //}
     }
 
     public void WhoBeginAfterTurn()

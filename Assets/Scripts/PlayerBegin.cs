@@ -5,12 +5,7 @@ using UnityEngine;
 public class PlayerBegin: MonoBehaviour
 {
     public TurnPlayer turnPlayer;
-
-    public GameObject playerArea;
-    public GameObject player2Area;
-    public GameObject player3Area;
-
-    
+   
     public bool isPlayer1Begin = false;
     public bool isPlayer2Begin = false;
     public bool isPlayer3Begin = false;
@@ -22,7 +17,7 @@ public class PlayerBegin: MonoBehaviour
 
     public void WhoBegin()
     {
-        int indexOfPlayer = Random.Range(1, 3);
+        int indexOfPlayer = Random.Range(1, 4);
 
         if (indexOfPlayer == 1)
         {

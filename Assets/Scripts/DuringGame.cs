@@ -8,6 +8,7 @@ public class DuringGame : MonoBehaviour
     public EndOfRound endOfRound;
     public SystemOfPoint systemOfPoint;
     public ResetForNewRound resetForNewRound;
+    public EndOfGame endOfGame;
 
     void Update()
     {
@@ -21,6 +22,10 @@ public class DuringGame : MonoBehaviour
             endOfRound.numberOfRound++;
 
             endOfRound.isEndOfTheRound = false;
-        }
+        } 
+        else if (endOfRound.isEndOfTheRound && endOfRound.numberOfRound == 5)
+        {
+            endOfGame.WhoWonTheGame();
+        }        
     }
 }

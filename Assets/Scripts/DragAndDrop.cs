@@ -8,8 +8,9 @@ public class DragAndDrop : MonoBehaviour
     public IsARedCard isARedCard;
     public CanDropOnTable canDropOnTable;
     public TurnPlayer turnPlayer;
+    public ListCardsTable listCardsTable;
 
-   
+    public GameObject mainCanvas;
     public GameObject player1Hand;
     public GameObject player2Hand;
     public GameObject player3Hand;
@@ -23,11 +24,13 @@ public class DragAndDrop : MonoBehaviour
 
     private void Awake()
     {
+        mainCanvas = GameObject.Find("MainCanvas");
         player1Hand = GameObject.Find("Player1Hand");
         player2Hand = GameObject.Find("Player2Hand");
         player3Hand = GameObject.Find("Player3Hand");
         tableDropZone = GameObject.Find("DropZone");
-        turnPlayer = tableDropZone.GetComponent<TurnPlayer>();
+        turnPlayer = mainCanvas.GetComponent<TurnPlayer>();
+        listCardsTable = tableDropZone.GetComponent<ListCardsTable>();
     }
 
     public void OnMouseDown()
@@ -87,9 +90,9 @@ public class DragAndDrop : MonoBehaviour
                 turnPlayer.SystemTurnPlayer();
             }
                     
-            if (!turnPlayer.cardsInTable.Contains(gameObject))
+            if (!listCardsTable.cardsInTable.Contains(gameObject))
             {
-                turnPlayer.cardsInTable.Add(gameObject);
+                listCardsTable.cardsInTable.Add(gameObject);
             }
 
             transform.SetParent(tableDropZone.transform, true);

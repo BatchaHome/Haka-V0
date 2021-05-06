@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5d6bf15846311499123022e7bd3b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardInDeck: []
+  cardsInDeck: []
 --- !u!224 &231645173 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 511320498}
   - component: {fileID: 511320500}
   - component: {fileID: 511320499}
+  - component: {fileID: 511320501}
   m_Layer: 5
   m_Name: Goze
   m_TagString: Untagged
@@ -475,6 +476,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511320497}
   m_CullTransparentMesh: 1
+--- !u!114 &511320501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511320497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597d1f5b8c8c1e543acce708debd84bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardsInGoze: []
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,7 +855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatingCards: {fileID: 945524774}
   playerHand: {fileID: 822752324}
-  turnPlayer: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
   player3Hand: {fileID: 1470019260}
@@ -951,6 +965,8 @@ GameObject:
   - component: {fileID: 945524786}
   - component: {fileID: 945524785}
   - component: {fileID: 945524788}
+  - component: {fileID: 945524789}
+  - component: {fileID: 945524790}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -1036,6 +1052,7 @@ RectTransform:
   - {fileID: 679751579}
   - {fileID: 858797477}
   - {fileID: 511320498}
+  - {fileID: 1872861943}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1073,10 +1090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837db08f0b3ccd847aacaffb9252e294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnPlayer: {fileID: 2042968686}
-  playerArea: {fileID: 1260219258}
-  player2Area: {fileID: 679751578}
-  player3Area: {fileID: 858797476}
+  turnPlayer: {fileID: 945524789}
   isPlayer1Begin: 0
   isPlayer2Begin: 0
   isPlayer3Begin: 0
@@ -1117,10 +1131,6 @@ MonoBehaviour:
   deck: {fileID: 204344869}
   goze: {fileID: 511320497}
   creatingCards: {fileID: 945524774}
-  player1Cards: []
-  player2Cards: []
-  player3Cards: []
-  gozeCards: []
 --- !u!114 &945524778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,7 +1144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBegin: {fileID: 945524775}
-  turnPlayer: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
   player3Hand: {fileID: 1470019260}
@@ -1150,9 +1160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e70445eec3faa2c4286a7463723e87cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnPlayer: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   creatingCards: {fileID: 945524774}
   winningStack: {fileID: 945524783}
+  listCardsTable: {fileID: 2042968686}
   winningByHigherCard: {fileID: 945524781}
   winningByOldMadManCard: {fileID: 945524782}
   indexOfCards: 
@@ -1176,7 +1187,7 @@ MonoBehaviour:
   endOfTurn: {fileID: 945524784}
   canPlay: {fileID: 945524778}
   rules: {fileID: 945524779}
-  turnPlayer: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   winningStack: {fileID: 945524783}
 --- !u!114 &945524781
 MonoBehaviour:
@@ -1190,11 +1201,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5efbbbb4b5937943a0424db8a7090ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnPlayer: {fileID: 2042968686}
+  listCardsTable: {fileID: 2042968686}
   creatingCards: {fileID: 945524774}
   drawingCards: {fileID: 945524777}
   rules: {fileID: 945524779}
   winningStack: {fileID: 945524783}
+  player1Hand: {fileID: 2118263182}
+  player2Hand: {fileID: 822752319}
+  player3Hand: {fileID: 1470019260}
   cardWinning: 0
 --- !u!114 &945524782
 MonoBehaviour:
@@ -1210,10 +1224,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rules: {fileID: 945524779}
   creatingCards: {fileID: 945524774}
-  turnPlayer: {fileID: 2042968686}
+  listCardsTable: {fileID: 2042968686}
   drawingCards: {fileID: 945524777}
   playerBegin: {fileID: 945524775}
   winningStack: {fileID: 945524783}
+  player1Hand: {fileID: 2118263182}
+  player2Hand: {fileID: 822752319}
+  player3Hand: {fileID: 1470019260}
   isPlayer1PlayedOMM: 0
   isPlayer2PlayedOMM: 0
   isPlayer3PlayedOMM: 0
@@ -1229,8 +1246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5db92850e70d74fab374526bc817b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnPlayer: {fileID: 2042968686}
-  cardInDeck: {fileID: 204344873}
+  listCardsTable: {fileID: 2042968686}
+  listCardsDeck: {fileID: 204344873}
   deck: {fileID: 204344869}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
@@ -1238,9 +1255,6 @@ MonoBehaviour:
   player1CardStackWon: {fileID: 1777226433}
   player2CardStackWon: {fileID: 1486147347}
   player3CardStackWon: {fileID: 1420858005}
-  player1StackWon: []
-  player2StackWon: []
-  player3StackWon: []
   isPlayer1WonThisStack: 0
   isPlayer2WonThisStack: 0
   isPlayer3WonThisStack: 0
@@ -1256,7 +1270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c95028f354b22f46b1ba2ceee79fe69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnPlayer: {fileID: 2042968686}
+  listCardsTable: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   playerBegin: {fileID: 945524775}
   isARedCard: {fileID: 2042968683}
   rules: {fileID: 945524779}
@@ -1318,7 +1333,8 @@ MonoBehaviour:
   drawingCards: {fileID: 945524777}
   creatingCards: {fileID: 945524774}
   winningStack: {fileID: 945524783}
-  cardInDeck: {fileID: 204344873}
+  listCardsDeck: {fileID: 204344873}
+  endOfRound: {fileID: 945524787}
 --- !u!114 &945524787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1365,50 @@ MonoBehaviour:
   endOfRound: {fileID: 945524787}
   systemOfPoint: {fileID: 945524785}
   resetForNewRound: {fileID: 945524786}
+  endOfGame: {fileID: 945524790}
+--- !u!114 &945524789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166bbacd403409f4b8febb7f6a7091c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Hand: {fileID: 2118263182}
+  player2Hand: {fileID: 822752319}
+  player3Hand: {fileID: 1470019260}
+  player1HasToPlay: 0
+  player2HasToPlay: 0
+  player3HasToPlay: 0
+  player1HavePlayed: 0
+  player2HavePlayed: 0
+  player3HavePlayed: 0
+  player1HavePlayedThisTurn: 0
+  player2HavePlayedThisTurn: 0
+  player3HavePlayedThisTurn: 0
+--- !u!114 &945524790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4bcba0a8e746de47a3a79a760d631c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endOfRound: {fileID: 945524787}
+  systemOfPoint: {fileID: 945524785}
+  endGameScoreBoard: {fileID: 1872861942}
+  winnerText: {fileID: 1411029243}
+  finalPointPlayer1: 0
+  finalPointPlayer2: 0
+  finalPointPlayer3: 0
 --- !u!1 &1260219258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,6 +1563,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391727687}
   m_CullTransparentMesh: 1
+--- !u!1 &1411029242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1411029245}
+  - component: {fileID: 1411029244}
+  - component: {fileID: 1411029243}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1411029243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411029242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1411029244
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411029242}
+  m_CullTransparentMesh: 1
+--- !u!224 &1411029245
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411029242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1872861943}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000010201, y: 0.0000014343}
+  m_SizeDelta: {x: 922.53, y: 299.43}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1420858005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1653,7 @@ GameObject:
   - component: {fileID: 1420858006}
   - component: {fileID: 1420858008}
   - component: {fileID: 1420858007}
+  - component: {fileID: 1420858009}
   m_Layer: 5
   m_Name: Player3CardStackWon
   m_TagString: Untagged
@@ -1578,6 +1718,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420858005}
   m_CullTransparentMesh: 1
+--- !u!114 &1420858009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420858005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e125eac72b41b428dd49f07593ef58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackWon: []
 --- !u!1 &1449425889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,7 +1939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatingCards: {fileID: 945524774}
   playerHand: {fileID: 1470019265}
-  turnPlayer: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
   player3Hand: {fileID: 1470019260}
@@ -1802,6 +1955,7 @@ GameObject:
   - component: {fileID: 1486147348}
   - component: {fileID: 1486147350}
   - component: {fileID: 1486147349}
+  - component: {fileID: 1486147351}
   m_Layer: 5
   m_Name: Player2CardStackWon
   m_TagString: Untagged
@@ -1866,6 +2020,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486147347}
   m_CullTransparentMesh: 1
+--- !u!114 &1486147351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486147347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e125eac72b41b428dd49f07593ef58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackWon: []
 --- !u!1 &1777226433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,6 +2044,7 @@ GameObject:
   - component: {fileID: 1777226434}
   - component: {fileID: 1777226436}
   - component: {fileID: 1777226435}
+  - component: {fileID: 1777226437}
   m_Layer: 5
   m_Name: Player1CardStackWon
   m_TagString: Untagged
@@ -1940,6 +2108,95 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777226433}
+  m_CullTransparentMesh: 1
+--- !u!114 &1777226437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777226433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e125eac72b41b428dd49f07593ef58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stackWon: []
+--- !u!1 &1872861942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872861943}
+  - component: {fileID: 1872861945}
+  - component: {fileID: 1872861944}
+  m_Layer: 5
+  m_Name: EndGameScoreboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1872861943
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872861942}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1411029245}
+  m_Father: {fileID: 945524773}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000009536743, y: 0.0000071525574}
+  m_SizeDelta: {x: 922.53, y: 299.43}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1872861944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872861942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1872861945
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872861942}
   m_CullTransparentMesh: 1
 --- !u!1 &1970860713
 GameObject:
@@ -2027,9 +2284,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2042968685}
   - component: {fileID: 2042968684}
-  - component: {fileID: 2042968686}
   - component: {fileID: 2042968683}
   - component: {fileID: 2042968682}
+  - component: {fileID: 2042968686}
   m_Layer: 5
   m_Name: DropZone
   m_TagString: Untagged
@@ -2067,7 +2324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82bb403f08bd026448944b89f2b71cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnPlayer: {fileID: 2042968686}
+  listCardsTable: {fileID: 2042968686}
   creatingCards: {fileID: 945524774}
   isARedCardOnTable: 0
 --- !u!61 &2042968684
@@ -2124,24 +2381,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2042968681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 166bbacd403409f4b8febb7f6a7091c4, type: 3}
+  m_Script: {fileID: 11500000, guid: d9aec60a9924a384fbe3b09757d92e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1Hand: {fileID: 2118263182}
-  player2Hand: {fileID: 822752319}
-  player3Hand: {fileID: 1470019260}
-  rules: {fileID: 945524779}
-  endOfTurn: {fileID: 945524784}
   cardsInTable: []
-  player1HasToPlay: 0
-  player2HasToPlay: 0
-  player3HasToPlay: 0
-  player1HavePlayed: 0
-  player2HavePlayed: 0
-  player3HavePlayed: 0
-  player1HavePlayedThisTurn: 0
-  player2HavePlayedThisTurn: 0
-  player3HavePlayedThisTurn: 0
 --- !u!1 &2118263182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,7 +2514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   creatingCards: {fileID: 945524774}
   playerHand: {fileID: 2118263187}
-  turnPlayer: {fileID: 2042968686}
+  turnPlayer: {fileID: 945524789}
   player1Hand: {fileID: 2118263182}
   player2Hand: {fileID: 822752319}
   player3Hand: {fileID: 1470019260}
@@ -2396,11 +2639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1168
+      value: 1226
       objectReference: {fileID: 0}
     - target: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 519
+      value: 544
       objectReference: {fileID: 0}
     - target: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2436,7 +2679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000026703
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 57842391889738849, guid: 754d07e2ca6d2064abfa977dce866980, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -16,105 +16,60 @@ public class ResetForNewRound : MonoBehaviour
     public DrawingCards drawingCards;
     public CreatingCards creatingCards;
     public WinningStack winningStack;
-    public CardInDeck cardInDeck;
+    public ListCardsDeck listCardsDeck;
+    public EndOfRound endOfRound;
 
-    private bool isAllCardsDrawed;
     public void ResetDrawingCards()
     {
         PutEveryCardInDeck();
-        DrawingCardsAfterRound();
-        
+        ResetList();
+        drawingCards.DrawingCard();
+    }
+
+    public void ResetList()
+    {
+        goze.GetComponent<ListCardsGoze>().cardsInGoze.Clear();
+
+        player1CardStackWon.GetComponent<ListStackPlayer>().stackWon.Clear();
+        player2CardStackWon.GetComponent<ListStackPlayer>().stackWon.Clear();
+        player3CardStackWon.GetComponent<ListStackPlayer>().stackWon.Clear();
     }
 
     public void PutEveryCardInDeck()
     {
-        foreach (GameObject cardInGoze in drawingCards.gozeCards)
-        { 
-            cardInGoze.transform.SetParent(deck.transform, true);
+        foreach (GameObject cardInGoze in goze.GetComponent<ListCardsGoze>().cardsInGoze)
+        {
+            cardInGoze.transform.SetParent(deck.transform, false);
+            listCardsDeck.cardsInDeck.Add(cardInGoze);
 
-            cardInDeck.cardInDeck.Add(cardInGoze);
+            Debug.Log("Put card in deck from goze");
         }
 
+        foreach (GameObject cardInPlayer1Stack in player1CardStackWon.GetComponent<ListStackPlayer>().stackWon)
+        {
+            cardInPlayer1Stack.transform.SetParent(deck.transform, true);
+            listCardsDeck.cardsInDeck.Add(cardInPlayer1Stack);
 
-            foreach (GameObject cardInPlayer1Stack in winningStack.player1StackWon)
-            {
-                cardInPlayer1Stack.transform.SetParent(deck.transform, true);
-                cardInDeck.cardInDeck.Add(cardInPlayer1Stack);
-            }
+            Debug.Log("Put card in deck from StackPlayer1");
+        }
      
       
-            foreach (GameObject cardInPlayer2Stack in winningStack.player2StackWon)
-            {
-                cardInPlayer2Stack.transform.SetParent(deck.transform, true);
-                cardInDeck.cardInDeck.Add(cardInPlayer2Stack);
-            }
+        foreach (GameObject cardInPlayer2Stack in player2CardStackWon.GetComponent<ListStackPlayer>().stackWon)
+        {
+            cardInPlayer2Stack.transform.SetParent(deck.transform, true);
+            listCardsDeck.cardsInDeck.Add(cardInPlayer2Stack);
+
+            Debug.Log("Put card in deck from StackPlayer2");
+        }
        
   
-            foreach (GameObject cardInPlayer3Stack in winningStack.player3StackWon)
-            {
-                cardInPlayer3Stack.transform.SetParent(deck.transform, true);
-                cardInDeck.cardInDeck.Add(cardInPlayer3Stack);
-            }
+        foreach (GameObject cardInPlayer3Stack in player3CardStackWon.GetComponent<ListStackPlayer>().stackWon)
+        {
+            cardInPlayer3Stack.transform.SetParent(deck.transform, true);
+            listCardsDeck.cardsInDeck.Add(cardInPlayer3Stack);
+
+            Debug.Log("Put card in deck from StackPlayer3");
+        }
         
-    }
-
-    public void DrawingCardsAfterRound()
-    {
-        if (!isAllCardsDrawed)
-        {
-            foreach (GameObject card in cardInDeck.cardInDeck)
-            {
-                Debug.Log(deck.transform.childCount.ToString());
-
-                GameObject picked;
-                picked = deck.transform.GetChild(Random.Range(0, deck.transform.childCount)).gameObject;
-
-                if (player1Hand.transform.childCount < player2Hand.transform.childCount && player1Hand.transform.childCount <= 5)
-                {
-                    picked.transform.SetParent(player1Hand.transform, false);
-                    Debug.Log("Carte distribué à player 1");
-
-                    drawingCards.player1Cards.Add(picked);
-                    player1Hand.GetComponent<PlayerHand>().cardsInHand.Add(picked);
-                }
-                else if (player2Hand.transform.childCount < player3Hand.transform.childCount && player2Hand.transform.childCount <= 5)
-                {
-                    picked.transform.SetParent(player2Hand.transform, false);
-                    Debug.Log("Carte distribué à player 2");
-
-                    drawingCards.player2Cards.Add(picked);
-                    player2Hand.GetComponent<PlayerHand>().cardsInHand.Add(picked);
-                }
-                else if (player3Hand.transform.childCount < goze.transform.childCount && player3Hand.transform.childCount <= 5)
-                {
-                    picked.transform.SetParent(player3Hand.transform, false);
-                    Debug.Log("Carte distribué à player 3");
-
-                    drawingCards.player3Cards.Add(picked);
-                    player3Hand.GetComponent<PlayerHand>().cardsInHand.Add(picked);
-                }
-                else if (goze.transform.childCount <= 5)
-                {
-                    picked.transform.SetParent(goze.transform, false);
-                    Debug.Log("Carte distribué à goze");
-
-                    drawingCards.gozeCards.Add(picked);
-                }
-                else
-                {
-                    Debug.Log("Something went wrong with drawing...");
-                }
-
-                if (player1Hand.transform.childCount == 5 && player2Hand.transform.childCount == 5 && player3Hand.transform.childCount == 5 && goze.transform.childCount == 5)
-                {
-                    isAllCardsDrawed = true;
-                    cardInDeck.cardInDeck.Clear();
-                }
-            }
-        }
-        else
-        {
-            isAllCardsDrawed = false;
-        }
     }
 }

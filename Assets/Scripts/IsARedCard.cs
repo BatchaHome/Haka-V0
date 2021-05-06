@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class IsARedCard : MonoBehaviour
 {
-    public TurnPlayer turnPlayer;
+    public ListCardsTable listCardsTable;
     public CreatingCards creatingCards;
 
     public bool isARedCardOnTable;
 
     public void RedCardOnTable()
     {
-        foreach (GameObject card in turnPlayer.cardsInTable)
+        foreach (GameObject card in listCardsTable.cardsInTable)
         {
             int indexOfCard = creatingCards.cards.IndexOf(card);
 

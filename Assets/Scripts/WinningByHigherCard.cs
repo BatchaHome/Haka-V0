@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class WinningByHigherCard : MonoBehaviour
 {
-    public TurnPlayer turnPlayer;
+    public ListCardsTable listCardsTable;
     public CreatingCards creatingCards;
     public DrawingCards drawingCards;
     public Rules rules;
     public WinningStack winningStack;
+
+    public GameObject player1Hand;
+    public GameObject player2Hand;
+    public GameObject player3Hand;
 
     public int cardWinning;
 
@@ -40,19 +44,19 @@ public class WinningByHigherCard : MonoBehaviour
             cardWinning = rules.indexOfCards[2];
         }
 
-        foreach (GameObject card in turnPlayer.cardsInTable)
+        foreach (GameObject card in listCardsTable.cardsInTable)
         {
             if (card == creatingCards.cards[cardWinning])
             {
-                if (drawingCards.player1Cards.Contains(card))
+                if (player1Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
                 {
                     winningStack.isPlayer1WonThisStack = true;
                 }
-                else if (drawingCards.player2Cards.Contains(card))
+                else if (player2Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
                 {
                     winningStack.isPlayer2WonThisStack = true;
                 }
-                else if (drawingCards.player3Cards.Contains(card))
+                else if (player3Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
                 {
                     winningStack.isPlayer3WonThisStack = true;
                     

@@ -7,6 +7,7 @@ public class Rules : MonoBehaviour
     public TurnPlayer turnPlayer;
     public CreatingCards creatingCards;
     public WinningStack winningStack;
+    public ListCardsTable listCardsTable;
 
     public WinningByHigherCard winningByHigherCard;
     public WinningByOldMadManCard winningByOldMadManCard;
@@ -32,7 +33,7 @@ public class Rules : MonoBehaviour
 
     public void WhoWinThisTurn()
     {
-        foreach (GameObject card in turnPlayer.cardsInTable)
+        foreach (GameObject card in listCardsTable.cardsInTable)
         {
             int indexOfCard = creatingCards.cards.IndexOf(card);
             indexOfCards.Add(indexOfCard);
@@ -42,6 +43,10 @@ public class Rules : MonoBehaviour
         {
             isTwoOldMadManHaveBeenPlayed = true;
             Debug.Log("Deux cartes Vieux Fou ont été jouées");
+        }
+        else
+        {
+            isTwoOldMadManHaveBeenPlayed = false;
         }
 
         if (isTwoOldMadManHaveBeenPlayed)
