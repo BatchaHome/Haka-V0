@@ -7,6 +7,9 @@ TagManager:
   - OldMadMan
   - People
   - Samourai
+  - Player1
+  - Player2
+  - Player3
   layers:
   - Default
   - TransparentFX

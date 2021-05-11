@@ -29,6 +29,7 @@ public class ResetForNewRound : MonoBehaviour
     public void ResetList()
     {
         goze.GetComponent<ListCardsGoze>().cardsInGoze.Clear();
+        deck.GetComponent<ListCardsDeck>().cardsInDeck.Clear();
 
         player1CardStackWon.GetComponent<ListStackPlayer>().stackWon.Clear();
         player2CardStackWon.GetComponent<ListStackPlayer>().stackWon.Clear();

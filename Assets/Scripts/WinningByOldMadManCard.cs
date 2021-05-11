@@ -21,7 +21,6 @@ public class WinningByOldMadManCard : MonoBehaviour
 
     public void WhoWinsByOldMadManCard()
     {
-        WhoPlayedAOMM();
         WhoWins();
     }
 
@@ -43,12 +42,6 @@ public class WinningByOldMadManCard : MonoBehaviour
             {
                 isPlayer3PlayedOMM = true;
                 Debug.Log("Le joueur 3 a joué une carte Vieux fou");
-            }
-            else
-            {
-                isPlayer1PlayedOMM = false;
-                isPlayer2PlayedOMM = false;
-                isPlayer3PlayedOMM = false;
             }
         }
     }
@@ -101,6 +94,4 @@ public class WinningByOldMadManCard : MonoBehaviour
             winningStack.isPlayer3WonThisStack = true;
         }
     }
-
-
 }

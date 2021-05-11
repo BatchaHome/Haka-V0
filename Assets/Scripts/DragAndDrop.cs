@@ -9,6 +9,8 @@ public class DragAndDrop : MonoBehaviour
     public CanDropOnTable canDropOnTable;
     public TurnPlayer turnPlayer;
     public ListCardsTable listCardsTable;
+    public CreatingCards creatingCards;
+    public WinningByOldMadManCard winningByOMMC;
 
     public GameObject mainCanvas;
     public GameObject player1Hand;
@@ -30,6 +32,8 @@ public class DragAndDrop : MonoBehaviour
         player3Hand = GameObject.Find("Player3Hand");
         tableDropZone = GameObject.Find("DropZone");
         turnPlayer = mainCanvas.GetComponent<TurnPlayer>();
+        creatingCards = mainCanvas.GetComponent<CreatingCards>();
+        winningByOMMC = mainCanvas.GetComponent<WinningByOldMadManCard>();
         listCardsTable = tableDropZone.GetComponent<ListCardsTable>();
     }
 
@@ -76,16 +80,43 @@ public class DragAndDrop : MonoBehaviour
         {
             if (transform.IsChildOf(player1Hand.transform))
             {
+                if (creatingCards.cards.IndexOf(gameObject) >= 17)
+                {
+                    winningByOMMC.isPlayer1PlayedOMM = true;
+                }
+                else
+                {
+                    winningByOMMC.isPlayer1PlayedOMM = false;
+                }
+
                 turnPlayer.player1HavePlayed = true;
                 turnPlayer.SystemTurnPlayer();
             }
             else if (transform.IsChildOf(player2Hand.transform))
             {
+                if (creatingCards.cards.IndexOf(gameObject) >= 17)
+                {
+                    winningByOMMC.isPlayer2PlayedOMM = true;
+                }
+                else
+                {
+                    winningByOMMC.isPlayer2PlayedOMM = false;
+                }
+
                 turnPlayer.player2HavePlayed = true;
                 turnPlayer.SystemTurnPlayer();
             }
             else if (transform.IsChildOf(player3Hand.transform))
             {
+                if (creatingCards.cards.IndexOf(gameObject) >= 17)
+                {
+                    winningByOMMC.isPlayer3PlayedOMM = true;
+                }
+                else
+                {
+                    winningByOMMC.isPlayer3PlayedOMM = false;
+                }
+
                 turnPlayer.player3HavePlayed = true;
                 turnPlayer.SystemTurnPlayer();
             }

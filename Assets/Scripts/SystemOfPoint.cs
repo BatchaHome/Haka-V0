@@ -50,6 +50,10 @@ public class SystemOfPoint : MonoBehaviour
             pointPlayer3++;
         }
 
+        pointPlayer1 = pointPlayer1 / 3;
+        pointPlayer2 = pointPlayer2 / 3;
+        pointPlayer3 = pointPlayer3 / 3;
+
         if (pointPlayer1 == 0)
         {
             pointPlayer1 = -2;

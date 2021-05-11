@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndOfTurn : MonoBehaviour
 {
@@ -10,21 +11,12 @@ public class EndOfTurn : MonoBehaviour
     public PlayerBegin playerBegin;
     public IsARedCard isARedCard;
     public Rules rules;
-    public WinningByOldMadManCard winningByOldMadManCard;
-    public WinningStack winningStack;
-    public DrawingCards drawingCards;
 
-    public GameObject deck;
-    public GameObject tableDropZone;
     public GameObject player1Hand;
     public GameObject player2Hand;
     public GameObject player3Hand;
 
-    public int pointPlayer1;
-    public int pointPlayer2;
-    public int pointPlayer3;
-
-    public bool isTurnReset = false;
+    public GameObject textTurnOfTable;
 
     public int turnOfTable;
 

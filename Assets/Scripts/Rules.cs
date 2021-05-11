@@ -41,20 +41,13 @@ public class Rules : MonoBehaviour
 
         if (indexOfCards[0] >= 17 && indexOfCards[1] >= 17 || indexOfCards[0] >= 17 && indexOfCards[2] >= 17 || indexOfCards[1] >= 17 && indexOfCards[2] >= 17 || indexOfCards[1] >= 17 && indexOfCards[0] >= 17 || indexOfCards[2] >= 17 && indexOfCards[0] >= 17 || indexOfCards[2] >= 17 && indexOfCards[1] >= 17)
         {
-            isTwoOldMadManHaveBeenPlayed = true;
             Debug.Log("Deux cartes Vieux Fou ont été jouées");
-        }
-        else
-        {
-            isTwoOldMadManHaveBeenPlayed = false;
-        }
-
-        if (isTwoOldMadManHaveBeenPlayed)
-        {
+            isTwoOldMadManHaveBeenPlayed = true;
             winningByOldMadManCard.WhoWinsByOldMadManCard();
         }
         else
         {
+            isTwoOldMadManHaveBeenPlayed = false;
             winningByHigherCard.WhoWinsByHigherCard();
         }
 

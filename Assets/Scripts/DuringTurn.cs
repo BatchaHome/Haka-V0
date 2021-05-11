@@ -34,12 +34,14 @@ public class DuringTurn : MonoBehaviour
         if (rules.everyonePlayed)
         {
             rules.WhoWinThisTurn();
-            rules.everyonePlayed = false;
+            
         }
 
         if (winningStack.isPlayer1WonThisStack || winningStack.isPlayer2WonThisStack || winningStack.isPlayer3WonThisStack)
         {
             endOfTurn.ResetForNewTurn();
+
+            rules.everyonePlayed = false;
 
             turnPlayer.player1HavePlayed = false;
             turnPlayer.player2HavePlayed = false;

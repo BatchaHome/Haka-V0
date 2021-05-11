@@ -8,7 +8,7 @@ public class EndOfGame : MonoBehaviour
     public EndOfRound endOfRound;
     public SystemOfPoint systemOfPoint;
 
-    public GameObject endGameScoreBoard;
+    public GameObject scoreBoard;
 
     public Text winnerText;
 
@@ -18,8 +18,8 @@ public class EndOfGame : MonoBehaviour
 
     public void EndOfTheGame()
     {
-        endGameScoreBoard.SetActive(true);
         WhoWonTheGame();
+        ShowScoreboard();
     }
 
     public void WhoWonTheGame()
@@ -35,7 +35,7 @@ public class EndOfGame : MonoBehaviour
             // 3 = P3
 
             winnerText.text = "First : Player1 (" + finalPointPlayer1 + ")\r\n";
-            winnerText.text += "Second : Player2 (" + finalPointPlayer2 + "\r\n";
+            winnerText.text += "Second : Player2 (" + finalPointPlayer2 + ")\r\n";
             winnerText.text += "Third : Player3 (" + finalPointPlayer3 + ")";
         }
         else if (finalPointPlayer1 > finalPointPlayer2 && finalPointPlayer1 > finalPointPlayer3 && finalPointPlayer3 > finalPointPlayer2)
@@ -45,7 +45,7 @@ public class EndOfGame : MonoBehaviour
             // 3 = P2
 
             winnerText.text = "First : Player1 (" + finalPointPlayer1 + ")\r\n";
-            winnerText.text += "Second : Player3 (" + finalPointPlayer3 + "\r\n";
+            winnerText.text += "Second : Player3 (" + finalPointPlayer3 + ")\r\n";
             winnerText.text += "Third : Player2 (" + finalPointPlayer2 + ")";
         }
         else if (finalPointPlayer2 > finalPointPlayer1 && finalPointPlayer2 > finalPointPlayer3 && finalPointPlayer1 > finalPointPlayer3)
@@ -55,7 +55,7 @@ public class EndOfGame : MonoBehaviour
             // 3 = P3
 
             winnerText.text = "First : Player2 (" + finalPointPlayer2 + ")\r\n";
-            winnerText.text += "Second : Player1 (" + finalPointPlayer1 + "\r\n";
+            winnerText.text += "Second : Player1 (" + finalPointPlayer1 + ")\r\n";
             winnerText.text += "Third : Player3 (" + finalPointPlayer3 + ")";
         }
         else if (finalPointPlayer2 > finalPointPlayer1 && finalPointPlayer2 > finalPointPlayer3 && finalPointPlayer3 > finalPointPlayer1)
@@ -65,7 +65,7 @@ public class EndOfGame : MonoBehaviour
             // 3 = P1
 
             winnerText.text = "First : Player2 (" + finalPointPlayer2 + ")\r\n";
-            winnerText.text += "Second : Player3 (" + finalPointPlayer3 + "\r\n";
+            winnerText.text += "Second : Player3 (" + finalPointPlayer3 + ")\r\n";
             winnerText.text += "Third : Player1 (" + finalPointPlayer1 + ")";
         }
         else if (finalPointPlayer3 > finalPointPlayer2 && finalPointPlayer3 > finalPointPlayer1 && finalPointPlayer1 > finalPointPlayer2)
@@ -75,7 +75,7 @@ public class EndOfGame : MonoBehaviour
             // 3 = P2
 
             winnerText.text = "First : Player3 (" + finalPointPlayer3 + ")\r\n";
-            winnerText.text += "Second : Player1 (" + finalPointPlayer1 + "\r\n";
+            winnerText.text += "Second : Player1 (" + finalPointPlayer1 + ")\r\n";
             winnerText.text += "Third : Player2 (" + finalPointPlayer2 + ")";
         }
         else if (finalPointPlayer3 > finalPointPlayer2 && finalPointPlayer3 > finalPointPlayer1 && finalPointPlayer2 > finalPointPlayer1)
@@ -85,8 +85,13 @@ public class EndOfGame : MonoBehaviour
             // 3 = P1
 
             winnerText.text = "First : Player3 (" + finalPointPlayer3 + ")\r\n";
-            winnerText.text += "Second : Player2 (" + finalPointPlayer2 + "\r\n";
+            winnerText.text += "Second : Player2 (" + finalPointPlayer2 + ")\r\n";
             winnerText.text += "Third : Player1 (" + finalPointPlayer1 + ")";
         }
+    }
+
+    public void ShowScoreboard()
+    {
+        scoreBoard.GetComponent<Image>().color = new Color32(180, 180, 180, 255); 
     }
 }

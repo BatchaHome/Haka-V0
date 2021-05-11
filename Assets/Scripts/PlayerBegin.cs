@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBegin: MonoBehaviour
 {
     public TurnPlayer turnPlayer;
-   
+
+    public GameObject player1Area;
+    public GameObject player2Area;
+    public GameObject player3Area;
+
     public bool isPlayer1Begin = false;
     public bool isPlayer2Begin = false;
     public bool isPlayer3Begin = false;
@@ -23,18 +26,21 @@ public class PlayerBegin: MonoBehaviour
         {
             isPlayer1Begin = true;
             turnPlayer.player1HasToPlay = true;
+
             Debug.Log("C'est le joueur 1 qui commence");            
         }
         else if (indexOfPlayer == 2)
         {
             isPlayer2Begin = true;
             turnPlayer.player2HasToPlay = true;
+
             Debug.Log("C'est le joueur 2 qui commence");
         }
         else if (indexOfPlayer == 3)
         {
             isPlayer3Begin = true;
             turnPlayer.player3HasToPlay = true;
+
             Debug.Log("C'est le joueur 3 qui commence");
         }
 

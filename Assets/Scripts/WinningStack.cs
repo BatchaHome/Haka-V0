@@ -27,65 +27,34 @@ public class WinningStack : MonoBehaviour
         {
             foreach (GameObject card in listCardsTable.cardsInTable)
             {
-                if (player1Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
-                {
-                    player1CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
-                    Debug.Log("Le joueur 1 a gagné ce pli");
-                    card.transform.SetParent(player1CardStackWon.transform, true);
+                player1CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
+                Debug.Log("Le joueur 1 a gagné ce pli");
+                card.transform.SetParent(player1CardStackWon.transform, true);
                     
+                card.transform.position = player1CardStackWon.transform.position;
 
-                    card.transform.position = player1CardStackWon.transform.position;
-                }
-                else
-                {
-                    card.transform.SetParent(deck.transform, true);
-                    card.transform.position = deck.transform.position;
-
-                    listCardsDeck.cardsInDeck.Add(card);
-                }
             }
         }
         else if (isPlayer2WonThisStack)
         {
             foreach (GameObject card in listCardsTable.cardsInTable)
             {
-                if (player2Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
-                {
-                    player2CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
-                    Debug.Log("Le joueur 2 a gagné ce pli");
-                    card.transform.SetParent(player2CardStackWon.transform, true);
+                player2CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
+                Debug.Log("Le joueur 2 a gagné ce pli");
+                card.transform.SetParent(player2CardStackWon.transform, true);
 
-                    card.transform.position = player2CardStackWon.transform.position;
-                }
-                else
-                {
-                    card.transform.SetParent(deck.transform, true);
-                    card.transform.position = deck.transform.position;
-
-                    listCardsDeck.cardsInDeck.Add(card);
-                }
+                card.transform.position = player2CardStackWon.transform.position;
             }
         }
         else if (isPlayer3WonThisStack)
         {
             foreach (GameObject card in listCardsTable.cardsInTable)
             {
-                if (player3Hand.GetComponent<PlayerHand>().cardsInHand.Contains(card))
-                {
-                    player3CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
-                    Debug.Log("Le joueur 3 a gagné ce pli");
-                    card.transform.SetParent(player3CardStackWon.transform, true);
-                    
-
-                    card.transform.position = player3CardStackWon.transform.position;
-                }
-                else
-                {
-                    card.transform.SetParent(deck.transform, true);
-                    card.transform.position = deck.transform.position;
-
-                    listCardsDeck.cardsInDeck.Add(card);
-                }
+                player3CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
+                Debug.Log("Le joueur 3 a gagné ce pli");
+                card.transform.SetParent(player3CardStackWon.transform, true);
+                  
+                card.transform.position = player3CardStackWon.transform.position;
             }
         }
     }

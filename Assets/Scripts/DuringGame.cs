@@ -9,10 +9,21 @@ public class DuringGame : MonoBehaviour
     public SystemOfPoint systemOfPoint;
     public ResetForNewRound resetForNewRound;
     public EndOfGame endOfGame;
+    public EndOfTurn endOfTurn;
+
+    public GameObject textTurnOfTable;
+    public GameObject textRound;
 
     void Update()
     {
-        if (endOfRound.isEndOfTheRound)
+        ShowTurn();
+        ShowRound();
+
+        if (endOfRound.isEndOfTheRound && endOfRound.numberOfRound == 5)
+        {
+            endOfGame.EndOfTheGame();
+        }
+        else if (endOfRound.isEndOfTheRound)
         {
             systemOfPoint.ComptingPoint();
             systemOfPoint.AddPointIntoArray();
@@ -22,10 +33,18 @@ public class DuringGame : MonoBehaviour
             endOfRound.numberOfRound++;
 
             endOfRound.isEndOfTheRound = false;
-        } 
-        else if (endOfRound.isEndOfTheRound && endOfRound.numberOfRound == 5)
-        {
-            endOfGame.WhoWonTheGame();
-        }        
+        }
+    }
+
+    public void ShowTurn()
+    {
+        Text textInfoTurn = textTurnOfTable.GetComponent<Text>();
+        textInfoTurn.text = "Turn of table :" + endOfTurn.turnOfTable;
+    }
+
+    public void ShowRound()
+    {
+        Text textInfoRound = textRound.GetComponent<Text>();
+        textInfoRound.text = "Round :" + endOfRound.numberOfRound;
     }
 }
