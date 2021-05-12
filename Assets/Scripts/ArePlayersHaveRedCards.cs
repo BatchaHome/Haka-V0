@@ -1,20 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArePlayersHaveRedCards : MonoBehaviour
 {
     public CreatingCards creatingCards;
-    public PlayerHand playerHand;
     public TurnPlayer turnPlayer;
 
     public GameObject player1Hand;
     public GameObject player2Hand;
     public GameObject player3Hand;
 
-    public bool isPlayerHasRedCards;
+    public bool isPlayer1HasRedCards;
+    public bool isPlayer2HasRedCards;
+    public bool isPlayer3HasRedCards;
 
-    public void PlayerHasRedCardsInHand()
+    public void Update()
     {
         if (turnPlayer.player1HasToPlay)
         {
@@ -22,12 +21,12 @@ public class ArePlayersHaveRedCards : MonoBehaviour
             {
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
-                    player1Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = true;
+                    isPlayer1HasRedCards = true;
                     break;
                 }
                 else
                 {
-                    player1Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = false;
+                    isPlayer1HasRedCards = false;
                 }
             }
         }
@@ -37,12 +36,12 @@ public class ArePlayersHaveRedCards : MonoBehaviour
             {
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
-                    player2Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = true;
+                    isPlayer2HasRedCards = true;
                     break;
                 }
                 else
                 {
-                    player2Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = false;
+                    isPlayer2HasRedCards = false;
                 }
             }
         }
@@ -52,12 +51,12 @@ public class ArePlayersHaveRedCards : MonoBehaviour
             {
                 if (creatingCards.cards.IndexOf(card) > 7)
                 {
-                    player3Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = true;
+                    isPlayer3HasRedCards = true;
                     break;
                 }
                 else
                 {
-                    player3Hand.GetComponent<ArePlayersHaveRedCards>().isPlayerHasRedCards = false;
+                    isPlayer3HasRedCards = false;
                 }
             }
         }

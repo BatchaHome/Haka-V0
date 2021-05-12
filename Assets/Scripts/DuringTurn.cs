@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DuringTurn : MonoBehaviour
@@ -17,19 +15,6 @@ public class DuringTurn : MonoBehaviour
     {
         canPlay.WhoCanPlay();
         rules.EndTurnOfTheTable();
-
-        if (turnPlayer.player1HasToPlay)
-        {
-            arePlayer1HaveRedCards.PlayerHasRedCardsInHand();
-        }
-        else if (turnPlayer.player2HasToPlay)
-        {
-            arePlayer2HaveRedCards.PlayerHasRedCardsInHand();
-        }
-        else if (turnPlayer.player3HasToPlay)
-        {
-            arePlayer3HaveRedCards.PlayerHasRedCardsInHand();
-        }
        
         if (rules.everyonePlayed)
         {

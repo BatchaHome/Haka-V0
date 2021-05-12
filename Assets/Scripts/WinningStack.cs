@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WinningStack : MonoBehaviour
@@ -25,35 +23,35 @@ public class WinningStack : MonoBehaviour
     {
         if (isPlayer1WonThisStack)
         {
+            Debug.Log("Le joueur 1 a gagné ce pli");
+
             foreach (GameObject card in listCardsTable.cardsInTable)
             {
-                player1CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
-                Debug.Log("Le joueur 1 a gagné ce pli");
-                card.transform.SetParent(player1CardStackWon.transform, true);
-                    
+                player1CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);                
+                card.transform.SetParent(player1CardStackWon.transform, true);                    
                 card.transform.position = player1CardStackWon.transform.position;
 
             }
         }
         else if (isPlayer2WonThisStack)
         {
+            Debug.Log("Le joueur 2 a gagné ce pli");
+
             foreach (GameObject card in listCardsTable.cardsInTable)
             {
                 player2CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
-                Debug.Log("Le joueur 2 a gagné ce pli");
                 card.transform.SetParent(player2CardStackWon.transform, true);
-
                 card.transform.position = player2CardStackWon.transform.position;
             }
         }
         else if (isPlayer3WonThisStack)
         {
+            Debug.Log("Le joueur 3 a gagné ce pli");
+
             foreach (GameObject card in listCardsTable.cardsInTable)
             {
                 player3CardStackWon.GetComponent<ListStackPlayer>().stackWon.Add(card);
-                Debug.Log("Le joueur 3 a gagné ce pli");
-                card.transform.SetParent(player3CardStackWon.transform, true);
-                  
+                card.transform.SetParent(player3CardStackWon.transform, true);                  
                 card.transform.position = player3CardStackWon.transform.position;
             }
         }

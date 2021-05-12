@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DragAndDrop : MonoBehaviour
@@ -21,6 +19,7 @@ public class DragAndDrop : MonoBehaviour
 
     public bool isOverTable;
     public bool isDragging;
+    public bool playerHasRedCards;
 
     private Vector2 startPosition;
 
@@ -35,6 +34,8 @@ public class DragAndDrop : MonoBehaviour
         creatingCards = mainCanvas.GetComponent<CreatingCards>();
         winningByOMMC = mainCanvas.GetComponent<WinningByOldMadManCard>();
         listCardsTable = tableDropZone.GetComponent<ListCardsTable>();
+        isARedCard = tableDropZone.GetComponent<IsARedCard>();
+        canDropOnTable = tableDropZone.GetComponent<CanDropOnTable>();
     }
 
     public void OnMouseDown()
@@ -42,25 +43,21 @@ public class DragAndDrop : MonoBehaviour
         startParent = transform.parent.gameObject;
         startPosition = transform.position;
 
-       if (gameObject.transform.IsChildOf(player1Hand.transform))
-        {
-            arePlayersHaveRedCards = player1Hand.GetComponent<ArePlayersHaveRedCards>();
-        }
-        else if (gameObject.transform.IsChildOf(player2Hand.transform))
-        {
-            arePlayersHaveRedCards = player2Hand.GetComponent<ArePlayersHaveRedCards>();
-        }
-        else if (gameObject.transform.IsChildOf(player3Hand.transform))
-        {
-            arePlayersHaveRedCards = player3Hand.GetComponent<ArePlayersHaveRedCards>();
-        }
-
-        isARedCard = tableDropZone.GetComponent<IsARedCard>();
-        canDropOnTable = tableDropZone.GetComponent<CanDropOnTable>();
-
         isARedCard.RedCardOnTable();
 
-        canDropOnTable.CanDropCardOnTable(gameObject, arePlayersHaveRedCards.isPlayerHasRedCards, isARedCard.isARedCardOnTable);
+        if (turnPlayer.player1HasToPlay && gameObject.transform.IsChildOf(player1Hand.transform))
+        {
+            canDropOnTable.CanDropCardOnTable(gameObject, mainCanvas.GetComponent<ArePlayersHaveRedCards>().isPlayer1HasRedCards, isARedCard.isARedCardOnTable);
+        }
+        else if (turnPlayer.player2HasToPlay && gameObject.transform.IsChildOf(player2Hand.transform))
+        {
+            canDropOnTable.CanDropCardOnTable(gameObject, mainCanvas.GetComponent<ArePlayersHaveRedCards>().isPlayer2HasRedCards, isARedCard.isARedCardOnTable);
+        }
+        else if (turnPlayer.player3HasToPlay && gameObject.transform.IsChildOf(player3Hand.transform))
+        {
+            canDropOnTable.CanDropCardOnTable(gameObject, mainCanvas.GetComponent<ArePlayersHaveRedCards>().isPlayer3HasRedCards, isARedCard.isARedCardOnTable);
+        }
+
         isDragging = true;
     }
 

@@ -1045,7 +1045,6 @@ GameObject:
   - component: {fileID: 822752322}
   - component: {fileID: 822752321}
   - component: {fileID: 822752324}
-  - component: {fileID: 822752325}
   m_Layer: 5
   m_Name: Player2Hand
   m_TagString: Untagged
@@ -1147,25 +1146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsInHand: []
---- !u!114 &822752325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 822752319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d2239b518978f4784623a5ff42f718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatingCards: {fileID: 945524774}
-  playerHand: {fileID: 822752324}
-  turnPlayer: {fileID: 945524789}
-  player1Hand: {fileID: 2118263182}
-  player2Hand: {fileID: 822752319}
-  player3Hand: {fileID: 1470019260}
-  isPlayerHasRedCards: 0
 --- !u!1 &858797476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1255,7 @@ GameObject:
   - component: {fileID: 945524789}
   - component: {fileID: 945524790}
   - component: {fileID: 945524791}
+  - component: {fileID: 945524792}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -1499,9 +1480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee82969634b5b6547bbf69283d776466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arePlayer1HaveRedCards: {fileID: 2118263188}
-  arePlayer2HaveRedCards: {fileID: 822752325}
-  arePlayer3HaveRedCards: {fileID: 1470019266}
+  arePlayer1HaveRedCards: {fileID: 0}
+  arePlayer2HaveRedCards: {fileID: 0}
+  arePlayer3HaveRedCards: {fileID: 0}
   endOfTurn: {fileID: 945524784}
   canPlay: {fileID: 945524778}
   rules: {fileID: 945524779}
@@ -1742,6 +1723,26 @@ MonoBehaviour:
   noboriChangeHands: {fileID: 9088965047186770341, guid: a0cbd245d375376428a5cc19deba72cd, type: 3}
   noboriSeeCards: {fileID: 2934181379033616505, guid: ee6b40cb60aef4c499b71c4231a83205, type: 3}
   noboriZeroPoints: {fileID: 695718590134613748, guid: edd620e919b6fab46b85784b35d35b2d, type: 3}
+--- !u!114 &945524792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945524769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d2239b518978f4784623a5ff42f718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creatingCards: {fileID: 945524774}
+  turnPlayer: {fileID: 945524789}
+  player1Hand: {fileID: 2118263182}
+  player2Hand: {fileID: 822752319}
+  player3Hand: {fileID: 1470019260}
+  isPlayer1HasRedCards: 0
+  isPlayer2HasRedCards: 0
+  isPlayer3HasRedCards: 0
 --- !u!1 &1260219258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,7 +2158,6 @@ GameObject:
   - component: {fileID: 1470019263}
   - component: {fileID: 1470019262}
   - component: {fileID: 1470019265}
-  - component: {fileID: 1470019266}
   m_Layer: 5
   m_Name: Player3Hand
   m_TagString: Untagged
@@ -2259,25 +2259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsInHand: []
---- !u!114 &1470019266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470019260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d2239b518978f4784623a5ff42f718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatingCards: {fileID: 945524774}
-  playerHand: {fileID: 1470019265}
-  turnPlayer: {fileID: 945524789}
-  player1Hand: {fileID: 2118263182}
-  player2Hand: {fileID: 822752319}
-  player3Hand: {fileID: 1470019260}
-  isPlayerHasRedCards: 0
 --- !u!1 &1486147347
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,7 +2661,6 @@ MonoBehaviour:
   creatingCards: {fileID: 945524774}
   drawingCards: {fileID: 945524777}
   canDropHisCardOnTable: 0
-  hasRedCard: 0
 --- !u!114 &2042968683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2767,7 +2747,6 @@ GameObject:
   - component: {fileID: 2118263185}
   - component: {fileID: 2118263184}
   - component: {fileID: 2118263187}
-  - component: {fileID: 2118263188}
   m_Layer: 5
   m_Name: Player1Hand
   m_TagString: Untagged
@@ -2869,25 +2848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardsInHand: []
---- !u!114 &2118263188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118263182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d2239b518978f4784623a5ff42f718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creatingCards: {fileID: 945524774}
-  playerHand: {fileID: 2118263187}
-  turnPlayer: {fileID: 945524789}
-  player1Hand: {fileID: 2118263182}
-  player2Hand: {fileID: 822752319}
-  player3Hand: {fileID: 1470019260}
-  isPlayerHasRedCards: 0
 --- !u!1 &2128571834
 GameObject:
   m_ObjectHideFlags: 0

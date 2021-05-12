@@ -18,6 +18,7 @@ public class IsARedCard : MonoBehaviour
             if (indexOfCard >= 8)
             {
                 isARedCardOnTable = true;
+                break;
             }
             else
             {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CanDropOnTable : MonoBehaviour
@@ -10,7 +8,6 @@ public class CanDropOnTable : MonoBehaviour
     public DrawingCards drawingCards;
 
     public bool canDropHisCardOnTable;
-    public bool hasRedCard;
 
     public void CanDropCardOnTable(GameObject cardInHand, bool playerHaveRedCard, bool redCardOnTable)
     {
@@ -32,7 +29,7 @@ public class CanDropOnTable : MonoBehaviour
             {
                 canDropHisCardOnTable = true;
             }
-            else
+            else if (!redCardOnTable)
             {
                 canDropHisCardOnTable = true;
             }
